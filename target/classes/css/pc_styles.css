@@ -1,0 +1,240 @@
+/************Estilos de la página en general**********/
+html, body{
+    height: 100%;
+    margin: 0px;
+    font-family: "Lucida Sans Unicode","Lucida Grande", Geneva, helvetica, sans-serif; 
+    
+}
+
+body{
+    background: #f3f3f0 url('../images/header-background.png') center 0 no-repeat; 
+    
+}
+
+header{
+
+    height: 200px;
+    background-position: left 60px;
+    background-repeat: no-repeat;
+    position: relative;
+    display: block;
+    
+}
+
+.menu{
+    display: block;
+    max-width: 968px;
+    height: 46px;
+    border: 1px solid #dce4e3;
+    background-color: #f7f9f9;
+    margin: 0 auto;
+    list-style: none;
+    font-size: 1em;
+    color: #706a66;
+    margin-top: -25px;
+}
+
+.menu li{
+    float: left;
+    line-height: 46px;
+    background: url('../images/separator-main-nav.jpg') right -2px no-repeat;
+}
+
+.menu li a {
+    padding-left: 16px;
+    padding-right: 16px;
+    display: block;
+    color: #706a66;
+    text-decoration: none;
+}
+
+.menu li a:hover {
+    color: #002b44;
+}
+
+
+.menu li.seleccionado a{
+    color: #002b44;
+    background: url('../images/selected-main-nav.jpg') left -1px no-repeat;
+    margin-left: 18px;
+}
+
+
+.formulario{
+    padding-bottom: 0px;
+    padding-top: 0px;
+    width: auto;
+    max-width: 1010px;
+    margin: auto;
+    background-color: white;
+    position: absolute;
+    margin-top: 162px;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+h1, h2{
+    color: #2485AE;
+    margin-bottom: 15px;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+h2{
+    margin-top: 30px;
+    font-weight: inherit;
+    
+}
+
+p{
+     color: #706a66;
+     text-align: justify;
+     padding-left: 40px;
+     padding-right: 40px;
+}
+
+/************ESTILOS DEL FORMULARIO PARA CREAR UNA CUENTA**********/
+
+.formCrearCuenta select{
+    height: 35px;
+    width: 50%;
+}
+
+
+.entrada-datos, .datos-titulos, .datos-actividades{
+    border: 0;
+    padding: 5px;
+    margin-left: 38px;
+    background: #fff;
+    border: 1px solid #e0dfdf;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    display: block;
+    width: 50%;
+    height: 24px;
+}
+
+.formCrearCuenta textarea{
+    width: 50%;
+    height: 200px;
+}
+
+.entrada-datos:focus, .datos-titulos:focus, .datos-actividades:focus{
+   box-shadow: 0 0 10px green;
+    border: 1.5px solid green;  
+}
+
+.entrada-datos:focus:invalid, .datos-titulos:focus:invalid, .datos-actividades:focus:invalid{
+    box-shadow: 0 0 10px red;
+    border: 1.5px solid red; 
+}
+
+
+.input-box{
+    font-family: "OpenSansSemiBold", Arial, sans-serif;
+    font-size: 14px;
+     padding-bottom: 25px;
+}
+
+select option{
+     font-family: "OpenSansSemiBold", Arial, sans-serif;
+    font-size: 12px;
+}
+
+.formCrearCuenta label{
+    float: left;
+    width: 21%;
+    margin-right: 4%;
+    padding-right: 0;
+    font-family: "OpenSansSemiBold", Arial, sans-serif;
+    font-size: 14px;
+    text-align: right;
+}
+
+em{
+    color: red;
+    font-size: 14px;
+}
+
+
+.informacion{
+    
+    height: auto;
+    width: 930px;
+    padding-left: 40px;
+    padding-right: 40px;
+    background-color: white;
+    
+    
+}
+
+
+.boton{
+    float: right;
+    margin-left: 2px;
+    background-color: #749a02;
+    color: #fff;
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 1;
+    display: inline-block;
+    padding: 7px 22px 8px;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    position: relative;
+    cursor: pointer;
+    border: 0;
+}
+
+.boton:hover {
+    background-color: #b2d15a;
+}
+
+
+#original, #informacion-profesional, #informacion-academica, #terminos-condiciones, #quitar-titulo, #cantonesA, #cantonesP, #cantonesH, #cantonesC, #cantonesL, #cantonesG, #quitar-act{
+    display: none;
+}
+
+.botones{
+    background-color: white;
+    height: 50px;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.separador{
+    border-top: 1px solid #d8d8d8;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    width: 930px;
+    margin: auto;
+}
+
+#re-dimensionada{
+    margin: auto;
+    width: 200px;
+    height: 200px;
+    margin-top: 20px;
+}
+
+#crear-orcid{
+    font-size: 12px;
+    color: firebrick;
+    width: 50%;
+    margin: auto;
+}
+
+#terminos{
+    width: 100%;
+}
+
+#lbl_term{
+    width: 50%;
+    margin-right: 5px;
+}
