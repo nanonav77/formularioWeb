@@ -14,8 +14,9 @@
     <mvc:resources mapping="/css/**" location="/WEB-INF/pages/css/"/>
     <mvc:resources mapping="/js/**" location="/WEB-INF/pages/js/"/>
     <mvc:resources mapping="/images/**" location="/WEB-INF/pages/images/"/>
-    <mvc:resources mapping="/images/**" location="/WEB-INF/pages/scss/"/>
-
+    <mvc:resources mapping="/scss/**" location="/WEB-INF/pages/scss/"/>
+	<mvc:resources mapping="/resources/**" location="/resources/" />	
+	
     <bean
          class="org.springframework.web.servlet.view.InternalResourceViewResolver">
     <property name="prefix">
@@ -23,6 +24,7 @@
     </property>
     <property name="suffix">
         <value>.jsp</value>
+        
     </property>
     </bean>
    </beans>

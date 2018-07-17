@@ -131,3 +131,5 @@ function obtenerCantonRegistro(canton){
     document.getElementById("cantonObtenidoUsuario").value = canton;
     document.getElementById('cantonElejido').value = canton;
 }
+
+

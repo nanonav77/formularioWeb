@@ -116,7 +116,48 @@ function obtenerCantonElejido(){
   	    	document.getElementById('cantonElejido').value = document.getElementById('cantonesP').value;
   		}
   	    
+  	    
+  	    
   }
+
+function determinarTipoUsuario(){
+	
+	if(document.getElementById('rol_auxi').value == "ROLE_ADMIN"){
+	    	document.getElementById('tabs11').style.display = "inline-flex"; 
+			document.getElementById('tabs12').style.display = "inline-flex";
+	    	document.getElementById('tabs13').style.display = "inline-flex"; 
+			document.getElementById('tabs14').style.display = "inline-flex";
+	    	document.getElementById('tabs15').style.display = "none"; 
+			document.getElementById('tabs16').style.display = "none";
+			
+			document.getElementById('seccion-busqueda').style.display = "block";
+			document.getElementById('informacion-personal').style.display = "block";
+		    document.getElementById('informacion-academica').style.display = "block";
+		    document.getElementById('informacion-profesional').style.display = "block";
+		    document.getElementById('terminos-condiciones').style.display = "none";
+		    document.getElementById('configuracion-cuenta').style.display = "none";
+		    
+	}
+	    if(document.getElementById('rol_auxi').value == "ROLE_USER"){
+	    	
+	    	
+	    	document.getElementById('tabs11').style.display = "none"; 
+			document.getElementById('tabs12').style.display = "inline-flex";
+	    	document.getElementById('tabs13').style.display = "inline-flex"; 
+			document.getElementById('tabs14').style.display = "inline-flex";
+	    	document.getElementById('tabs15').style.display = "inline-flex"; 
+			document.getElementById('tabs16').style.display = "inline-flex";
+			
+			document.getElementById('seccion-busqueda').style.display = "none";
+			document.getElementById('informacion-personal').style.display = "block";
+		    document.getElementById('informacion-academica').style.display = "block";
+		    document.getElementById('informacion-profesional').style.display = "block";
+		    document.getElementById('terminos-condiciones').style.display = "none";
+		    document.getElementById('configuracion-cuenta').style.display = "none";
+		     
+	}
+	
+}
 function obtenerCantonRegistro(canton){
 	
     

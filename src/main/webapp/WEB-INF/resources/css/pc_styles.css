@@ -1,14 +1,15 @@
 /************Estilos de la página en general**********/
 html, body{
-    height: 100%;
+    
     margin: 0px;
     font-family: "Lucida Sans Unicode","Lucida Grande", Geneva, helvetica, sans-serif; 
+    
     
 }
 
 body{
     background: #f3f3f0 url('../images/header-background.png') center 0 no-repeat; 
-    
+      
 }
 
 header{
@@ -73,6 +74,7 @@ header{
     left: 0;
     bottom: 0;
     right: 0;
+    
 }
 
 h1, h2{
@@ -97,11 +99,80 @@ p{
 
 /************ESTILOS DEL FORMULARIO PARA CREAR UNA CUENTA**********/
 
+.tabs-container{
+    position: relative;
+    width: 930px;
+    margin: 0;
+    margin-top: 40px;
+    width: auto;
+    max-width: 1010px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    background: white;
+
+}
+
+.tabs{
+    list-style: none;
+    margin-top: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    display: flex;
+    color: #2485AE;
+}
+
+.tabs_item, .tabs_item.active{
+     
+    border: 1px solid #ccc;
+    border-bottom: none;
+    line-height: 2.5;
+    padding: 0 1em;
+    margin-right: 1px;
+    border-radius: 5px 5px 0 0;
+    position: relative;
+    top: 1px;
+    cursor: pointer;
+}
+
+.tabs_item{
+    z-index: 0;
+    background: #eee;
+}
+
+.tabs_item.active{
+    background: #fff;
+    z-index: 20;
+}
+
+.panels{
+    border: 1px solid #ccc;
+    padding: 1em;
+    position: relative;
+    z-index: 10;
+    width: 930px;
+
+    
+}
+
+.panels_item{
+    position: absolute;
+    left: -5000px;
+    margin: 0px;
+    padding: 0px;
+    bottom: 0px;
+}
+
+.panels_item.active{
+    position: relative;
+    left: 0;
+}
+
 .formCrearCuenta select{
     height: 35px;
     width: 50%;
 }
-
 
 .entrada-datos, .datos-titulos, .datos-actividades{
     border: 0;
@@ -113,9 +184,11 @@ p{
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     display: block;
-    width: 50%;
+    width: 40%;
     height: 24px;
 }
+
+
 
 .formCrearCuenta textarea{
     width: 50%;
@@ -161,14 +234,9 @@ em{
 
 
 .informacion{
-    
-    height: auto;
+    margin-top: 20px;
     width: 930px;
-    padding-left: 40px;
-    padding-right: 40px;
     background-color: white;
-    
-    
 }
 
 
@@ -197,7 +265,7 @@ em{
 }
 
 
-#original, #informacion-profesional, #informacion-academica, #terminos-condiciones, #quitar-titulo, #cantonesA, #cantonesP, #cantonesH, #cantonesC, #cantonesL, #cantonesG, #quitar-act{
+#original, #quitar-titulo, #cantonesA, #cantonesP, #cantonesH, #cantonesC, #cantonesL, #cantonesG, #quitar-act{
     display: none;
 }
 
@@ -238,3 +306,5 @@ em{
     width: 50%;
     margin-right: 5px;
 }
+
+

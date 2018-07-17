@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@page session="true"%>
@@ -24,7 +26,19 @@
 	background-color: #d9edf7;
 	border-color: #bce8f1;
 }
-
+.cta {
+  background: #f2f2f2;
+  width: 100%;
+  padding: 15px 40px;
+  box-sizing: border-box;
+  color: #666666;
+  font-size: 12px;
+  text-align: center;
+}
+.cta a {
+  color: #333333;
+  text-decoration: none;
+}
 
 </style>
   <meta charset="UTF-8">
@@ -40,7 +54,7 @@
 
   <!--pc_styles.css se muestra en dispositivos con pantalla mayor a un ancho de 481px-->
   <link rel="stylesheet" href="css/pc_styles.css" media="screen and (min-width: 481px)"> 
-  <!--pc_styles.css se muestra en dispositivos moviles con un ancho máximo de 480px-->
+  <!--pc_styles.css se muestra en dispositivos moviles con un ancho mÃ¡ximo de 480px-->
   <link rel="stylesheet" href="css/mobile_styles.css" media="handheld, only screen and (max-width: 480px)">
   <!--normalize.css estandariza los estilos para que se vean similar en varios navegadores-->
   <link rel="stylesheet" href="css/normalize.css">
@@ -48,92 +62,77 @@
 </head>
 <body onload='document.loginForm.username.focus();'>
 
-         <header>
-            <img src="images/logo.png" class="logo">
-        </header>
-        
-<!-- Form Mixin-->
-<!-- Input Mixin-->
-<!-- Button Mixin-->
-<!-- Pen Title-->
-
-<div class="module form-module">
-
-
-
-
-  <div class="toggle"><i class="fa fa-times fa-pencil"></i>
-    <div class="tooltip">Crear cuenta.</div>
-  </div>
-
-
-
-		
- <div class="form">
- 
-
-		 <h2>Inicio de sesión.</h2>
-
-		<form name='loginForm'
-			action="<c:url value='/j_spring_security_check' />" method='POST'>
-			
-			
-		<input type='email' name='correo' placeholder="correo" required>
-		
-       <input type="password" name="contrasena"  placeholder="contraseña" required/>
-
- 
-		<input name="submit" type="submit" value="Entrar" />
-
-			<input type="hidden" name="${_csrf.parameterName}"
-				value="${_csrf.token}" />
-		</form>
-		<div class="pen-title">
-		<c:if test="${not empty error}">
-			<div class="error">${error}</div>
-		</c:if>
-		<c:if test="${not empty msg}">
-			<div class="msg">${msg}</div>
-		</c:if>
+	<header>
+		<div style="position:absolute; top:7px; left:15px;">
+			<img src="images/logo2.png" >
 		</div>
-		<div class="cta"><a href="">olvidó su contraseña?</a></div>
+    	<div style="position:absolute; top:7px; left:230px;">
+			<img src="images/logo.png" >
+		</div>
+		
+    </header>
+
+	<div class="module form-module">
+		
+		<div class="toggle"><i class="fa fa-times fa-pencil"></i>
+    		<div class="tooltip">Crear cuenta.</div>
+  		</div>
+
+		<div class="form">
+
+		 	<h2 id="etiquetaLogin">Inicio de sesiÃ³n.</h2>
+			<h2 style="display: none;" id="etiquetaRecordar">Enviar ContraseÃ±a</h2>
+
+			
+			<form name='loginForm' action="<c:url value='/j_spring_security_check' />" method='POST'>
+				 
+	   			
+	   			<input type="text" id="cedula" name="cedula" placeholder="cedula" required>
+       			<input type="password" id="contrasena" name="contrasena"  placeholder="contraseÃ±a" required/>
+				<input id="submitI" name="submitI" type="submit" value="Entrar" />
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />	
+				<div id="olvidoCon" name="olvidoCon" class="cta"><a href="#" onClick="recordarContrasena();">Â¿Has olvidado tu contraseÃ±a?</a></div>
+			</form>
+			
+			<form:form name='forgetForm' action='forgetForm' method='POST'>
+	   			
+	   			<input style="display: none;" type="text" id="cedulaE" name="cedulaE" placeholder="cedula" required>
+       			<input style="display: none;" type="text" id="correoE" name="correoE"  placeholder="correo" required/>
+				<input style="display: none;" id="submitE" name="submitE" type="submit" value="Enviar.." />
+				<div id="atrasLogin" name="atrasLogin" style="display: none;" class="cta"><a href="#" onClick="volverLogin();">AtrÃ¡s</a></div>
+			</form:form> 
+		
+			<div class="pen-title">
+				<c:if test="${not empty error}">
+					<div class="error">${error}</div>
+				</c:if>
+				<c:if test="${not empty msg}">
+					<div class="msg">${msg}</div>
+				</c:if>
+			</div>
 		</div>
 		
  		<div class="form">
     		<h2>Crear una cuenta</h2>
     		
- 			<form:form name="registro" action="registrar" method="POST">
- 			<input type="email" name="correo" placeholder="Correo electrónico" required/>
- 			<input type="password" name="contrasena" placeholder="Contraseña" required/>
- 			<input type="password" name="contrasena_confirm" placeholder="Confirmar contraseña" required/>
-            <input type="submit" value="Registrar" class="btn"></li>
+ 			<form:form name="registro" id="registro" action="registrar" method="POST">
+ 				<input  name="cedula" pattern="[0-9]{9}" placeholder="nÃºmero de cÃ©dula formato ej 888888888" required/>
+ 				<input type="email" name="correo" placeholder="correo electrÃ³nico" required/>
+ 				<input type="password" name="contrasena" placeholder="contraseÃ±a" required/>
+ 				<input type="password" name="contrasena_confirm" placeholder="confirmar contraseÃ±a" required/>
+            	<input type="submit" value="Registrar" class="btn" onClick="compararContrasena();">
             
- 		<div class="pen-title">
-		<c:if test="${not empty error_registro}">
-			<div class="error">${error}</div>
-		</c:if>
- 
-		</div>           
- 
-</form:form>   		
-    		
-    <!-- 
-    	<form action="Servlet" method="post">
-      		
-      		<input type="password" placeholder="Password"/>
-      		<input type="email" placeholder="Email Address"/>
-      		<input type="tel" placeholder="Phone Number"/>
-      		<button>Registrar</button>
-    </form> -->
-  </div>
-  
-</div>		
-
-
-
-<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
- 
-<script src="js/index.js"></script>
-
+ 				<div class="pen-title">
+					<c:if test="${not empty error_registro}">
+						<div class="error">${error}</div>
+					</c:if> 
+				</div>           
+			</form:form>   		
+  		</div>
+	</div>		
+	<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+	<script src="js/index.js"></script>
+	<script src="js/validaciones.js"></script>
+	<script src="js/mostrarSeccionesFormulario.js"></script>	
 </body>
 </html>
