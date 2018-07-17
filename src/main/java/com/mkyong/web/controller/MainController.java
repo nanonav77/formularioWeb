@@ -779,5 +779,17 @@ public class MainController {
 		 
 	
   }
+	 @RequestMapping(value="/marcarTerminado", method = RequestMethod.POST)
+	 public String  marcarTerminado(@RequestParam("usuarioCompletar") String usuarioCompletar,@RequestParam("observacionesMarcarCompleto") String observacionesMarcarCompleto) throws IOException, ClassNotFoundException, SQLException {             
+			
+		 ModelAndView model = new ModelAndView();
+		 
+		 Singleton_MySQL.getInstancia().marcarCompletado(Integer.parseInt(usuarioCompletar.substring(0, 9)));
+		 
+		 System.out.println(observacionesMarcarCompleto);			
+		 
+		 model.setViewName("index");
+	     return "redirect:/inicio";
+	 } 
 	
 }

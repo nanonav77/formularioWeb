@@ -20,14 +20,15 @@ public class Email {
 
 	public static void enviarCorreo(String correoDestino, String cedula, String contrasena,String accion, String asunto) {
 
-		final String username = "navrojd77@gmail.com";
+		final String username = "jnavro17@gmail.com";
 		final String password = "jupiter070417";
 
 		Properties props = new Properties();
-		props.put("mail.smtp.auth", "true");
-		props.put("mail.smtp.starttls.enable", "true");
 		props.put("mail.smtp.host", "smtp.gmail.com");
-		props.put("mail.smtp.port", "587");
+		props.put("mail.smtp.socketFactory.port", "587");
+		props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+		props.put("mail.smtp.auth", "true");
+		props.put("mail.smtp.port", "465");
 
 		Session session = Session.getInstance(props,
 		  new javax.mail.Authenticator() {
@@ -39,7 +40,7 @@ public class Email {
 		try {
 
 			Message message = new MimeMessage(session);
-			message.setFrom(new InternetAddress("navrojd77@gmail.com"));
+			message.setFrom(new InternetAddress("jnavro17@gmail.com"));
 			
 			message.setRecipients(Message.RecipientType.TO,
 				InternetAddress.parse(correoDestino));

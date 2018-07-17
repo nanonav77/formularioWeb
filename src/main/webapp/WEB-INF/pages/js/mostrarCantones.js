@@ -129,6 +129,7 @@ function determinarTipoUsuario(){
 			document.getElementById('tabs14').style.display = "inline-flex";
 	    	document.getElementById('tabs15').style.display = "none"; 
 			document.getElementById('tabs16').style.display = "none";
+			document.getElementById('tabs17').style.display = "inline-flex";
 			
 			document.getElementById('seccion-busqueda').style.display = "block";
 			document.getElementById('informacion-personal').style.display = "block";
@@ -136,7 +137,7 @@ function determinarTipoUsuario(){
 		    document.getElementById('informacion-profesional').style.display = "block";
 		    document.getElementById('terminos-condiciones').style.display = "none";
 		    document.getElementById('configuracion-cuenta').style.display = "none";
-		    
+		    document.getElementById('seccion-descarga-informacion').style.display = "block";
 	}
 	    if(document.getElementById('rol_auxi').value == "ROLE_USER"){
 	    	
@@ -147,6 +148,7 @@ function determinarTipoUsuario(){
 			document.getElementById('tabs14').style.display = "inline-flex";
 	    	document.getElementById('tabs15').style.display = "inline-flex"; 
 			document.getElementById('tabs16').style.display = "inline-flex";
+			document.getElementById('tabs17').style.display = "none";
 			
 			document.getElementById('seccion-busqueda').style.display = "none";
 			document.getElementById('informacion-personal').style.display = "block";
@@ -154,6 +156,7 @@ function determinarTipoUsuario(){
 		    document.getElementById('informacion-profesional').style.display = "block";
 		    document.getElementById('terminos-condiciones').style.display = "none";
 		    document.getElementById('configuracion-cuenta').style.display = "none";
+		    document.getElementById('seccion-descarga-informacion').style.display = "none";
 		     
 	}
 	

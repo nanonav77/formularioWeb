@@ -534,6 +534,20 @@ public class MySQL{
     	System.out.print("sale");
     }
     //------------------------------------------------ UPDATE
+    public void marcarCompletado(int cedula){
+    	try{
+    		
+    		abrirConexionBD();
+    		Statement actualizacion = (Statement) conexion.createStatement();
+    		String query = "UPDATE micitt.cientifico SET terminado =1 WHERE cedula ="+cedula+"";
+    	    actualizacion.executeUpdate(query);
+    		 
+    		conexion.close();
+    	
+    	}catch(SQLException | ClassNotFoundException e ){
+    	
+    	}
+    }
     public int actualizarContrasena(int cedula,String correo,String contrasenaActual,String contrasenaNueva){
     	try{
     		

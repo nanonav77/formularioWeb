@@ -140,10 +140,10 @@
                     <div class="panels">
                     	<div style="display:none;" class="panels_item active" id="seccion-busqueda">
                         
-                        <form:form  name="buscarTodos"  action="buscarTodos" method="POST">
+                        
                             
                         	<table style="width:100%">
-								 
+							<form:form  name="buscarTodos"  action="buscarTodos" method="POST">	 
 								  <tr>
 								    
 								    <td><label for="b_ced">Buscar por Cédula:</label></td>
@@ -202,7 +202,22 @@
 								  </tr>
 								       
 								</table>
-						
+								<br/><br/>
+								<table style="width:100%">
+								<form:form  name="marcarTerminado"  action="marcarTerminado" method="POST">
+								
+								  <tr>
+								    
+								    <td>
+								    <button class="button button3" onclick="document.getElementById('usuarioCompletar').value = document.getElementById('selectBusqueda').value" type="submit" style="height: 42px;right:180px;">Marcar como Terminado</button>
+								    <textarea name="observacionesMarcarCompleto" id="observacionesMarcarCompleto" class="entrada-datos-completo" title="Observaciones" placeholder="Observaciones..." maxlength="1000"></textarea>
+								    <input type="text" id="usuarioCompletar" name="usuarioCompletar" style="display: none;">
+								    </td>
+							
+								  </tr>
+								
+								</form:form>
+								</table>
                  		</div>
                  
                        <div class="panels_item" id="info-personal">
@@ -1075,7 +1090,7 @@
                         </div>
                         </form:form>
                         <form:form  name="downloadFile"  action="downloadFile" method="GET">
-                        <div class="panels_item" style="height:220px;">
+                        <div id="seccion-descarga-informacion" class="panels_item" style="height:220px;">
                             
                             <div><label id="lbl_term" style="color:#008CBA;font-size: 22px;position:absolute;left:300px;" for="term">Descargar Excel Informativo</label></div>
                             <br/><br/>

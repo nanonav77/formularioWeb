@@ -189,6 +189,21 @@ p{
     height: 34px;
 }
 
+.entrada-datos-completo{
+    border: 0;
+    padding: 5px;
+    margin-right: 68px;
+    background: #fff;
+    border: 1px solid #e0dfdf;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    display: inline-block;
+    width: 50%;
+    height: 34px;
+    position:relative;
+}
+
 .datos-titulos, .datos-actividades{
     border: 0;
     padding: 5px;
