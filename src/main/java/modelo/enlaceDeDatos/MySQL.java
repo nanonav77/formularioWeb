@@ -35,6 +35,7 @@ public class MySQL{
 	private String servidor = "jdbc:mysql://localhost:3306/micitt?characterEncoding=utf-8";
 	private Connection conexion; 
 
+	//hni
     
     private void abrirConexionBD() throws ClassNotFoundException, SQLException{
 
