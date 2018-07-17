@@ -24,11 +24,10 @@ public class Email {
 		final String password = "jupiter070417";
 
 		Properties props = new Properties();
-		props.put("mail.smtp.host", "smtp.gmail.com");
-		props.put("mail.smtp.socketFactory.port", "587");
-		props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
 		props.put("mail.smtp.auth", "true");
-		props.put("mail.smtp.port", "465");
+		props.put("mail.smtp.starttls.enable", "true");
+		props.put("mail.smtp.host", "smtp.gmail.com");
+		props.put("mail.smtp.port", "587");
 
 		Session session = Session.getInstance(props,
 		  new javax.mail.Authenticator() {
@@ -40,40 +39,16 @@ public class Email {
 		try {
 
 			Message message = new MimeMessage(session);
-			message.setFrom(new InternetAddress("jnavro17@gmail.com"));
-			
+			message.setFrom(new InternetAddress(username));
 			message.setRecipients(Message.RecipientType.TO,
 				InternetAddress.parse(correoDestino));
-	
-			
 			message.setSubject(asunto);
-			
-			
-			MimeMultipart multipart = new MimeMultipart("related");
+			message.setText("Dear Mail Crawler,"
+				+ "\n\n No spam to my email, please!");
 
-	         // first part (the html)
-	         BodyPart messageBodyPart = new MimeBodyPart();
-	         String htmlText = "<H1>"+accion+"</H1><br/><br/><img src=\"cid:image\"><br/><H2>- Número de Identificación: "+cedula+"<br/>- Correo Electrónico: "+correoDestino+"<br/>- Contraseña: "+contrasena+"</H2>";
-	         messageBodyPart.setContent(htmlText, "text/html");
-	         // add it
-	         multipart.addBodyPart(messageBodyPart);
+			Transport.send(message);
 
-	         // second part (the image)
-	         //messageBodyPart = new MimeBodyPart();
-	         //DataSource fds = new FileDataSource(
-	          //  "src/main/webapp/WEB-INF/pages/images/micit.png");
-
-	         //messageBodyPart.setDataHandler(new DataHandler(fds));
-	         //messageBodyPart.setHeader("Content-ID", "<image>");
-
-	         // add image to the multipart
-	         //multipart.addBodyPart(messageBodyPart);
-
-	         // put everything together
-	         message.setContent(multipart);
-
-			 Transport.send(message);
-
+			System.out.println("Done");
 
 		} catch (MessagingException e) {
 			throw new RuntimeException(e);
