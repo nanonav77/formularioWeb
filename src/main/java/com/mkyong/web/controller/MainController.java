@@ -1,24 +1,12 @@
 package com.mkyong.web.controller;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
-import java.sql.Blob;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
-import javax.activation.MimetypesFileTypeMap;
+import java.io.UnsupportedEncodingException;
+
+import java.sql.SQLException;
+
 import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -31,25 +19,19 @@ import modelo.logicaDeIntegracion.Email;
 import modelo.logicaDeIntegracion.Excel;
 import modelo.logicaDeIntegracion.ExcelSolo;
 import modelo.logicaDeNegocio.Cientifico;
-import modelo.logicaDeNegocio.DatabaseImageExample;
 
-import org.apache.poi.hssf.usermodel.HSSFCell;
-import org.apache.poi.hssf.usermodel.HSSFRow;
-import org.apache.poi.hssf.usermodel.HSSFSheet;
+
+
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.solr.client.solrj.SolrServerException;
-import org.omg.CORBA.portable.InputStream;
-import org.springframework.asm.commons.Method;
+
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.User;
+
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
+
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -220,7 +202,7 @@ public class MainController {
         	model.addObject("error", "El correo o la cédula no son los correctos");
         }
         else {
-			Email.enviarCorreo(correo, Integer.toString(cedula), contrasena,"Sus datos personales son los siguientes:","Recordar Contraseña");
+			Email.enviarCorreo(correo,"Identificación: "+ Integer.toString(cedula),"Contraseña: "+ contrasena,"Sus datos personales son los siguientes:","Recordar Contraseña","");
 			model.addObject("msg", "La contraseña ha sido enviada correctamente!.");
 		}	
         		
@@ -410,7 +392,7 @@ public class MainController {
         if(Cientifico.insertarCientifico(nvoUsuario) != 1)
         	model.addObject("error", "El número de cédula que intenta registrar ya esta en uso.");
         else
-        	Email.enviarCorreo(nvoUsuario.getCorreo(), Integer.toString(nvoUsuario.getCedula()), nvoUsuario.getContrasena(),"El registro ha sido exitoso!!","Confirmación de Registro");
+        	Email.enviarCorreo(nvoUsuario.getCorreo(),"Idetificación: "+Integer.toString(nvoUsuario.getCedula()),"Contraseña: "+nvoUsuario.getContrasena(),"El registro ha sido exitoso!!","Confirmación de Registro","");
         	model.addObject("msg", "Te has registrado con Éxito.");
         
         model.setViewName("login");
@@ -695,7 +677,7 @@ public class MainController {
     	if(Singleton_MySQL.getInstancia().actualizarContrasena(cedula, correoActual, contrasenaActual, contrasenaNueva) != 1)
         	model.addObject("error", "No se ha completado la actualización de la contraseña!!.");
         else
-        	Email.enviarCorreo(correoActual, Integer.toString(cedula), contrasenaNueva, "Actualización de Contraseña", "Configuración de Cuenta");
+        	Email.enviarCorreo(correoActual,"Identificación: "+Integer.toString(cedula),"Contraseña Nueva: "+contrasenaNueva, "Actualización de Contraseña", "Configuración de Cuenta","");
         	model.addObject("msg", "La contraseña se ha actualizado con Éxito!, Revise su Email!");
         
         model.setViewName("index");
@@ -801,7 +783,7 @@ public class MainController {
 		 
 		 Singleton_MySQL.getInstancia().marcarCompletado(Integer.parseInt(usuarioCompletar.substring(0, 9)));
 		 
-		 System.out.println(observacionesMarcarCompleto);			
+		 Email.enviarCorreo(Singleton_MySQL.getInstancia().consultarCorreoUsuario(Integer.parseInt(usuarioCompletar.substring(0, 9))), "Identificación: "+usuarioCompletar.substring(0, 9),"Usuario: "+usuarioCompletar.substring(11,usuarioCompletar.length()-1), "Datos de Usuario", "Realizar Observaciones Usuario","Observaciones: "+observacionesMarcarCompleto);		
 		 
 		 model.setViewName("index");
 	     return "redirect:/inicio";

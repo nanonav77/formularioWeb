@@ -18,7 +18,7 @@ import javax.mail.internet.MimeMultipart;
 
 public class Email {
 
-	public static void enviarCorreo(String correoDestino, String cedula, String contrasena,String accion, String asunto) {
+	public static void enviarCorreo(String correoDestino, String cedula, String contrasena,String accion, String asunto, String observaciones) {
 
 		final String username = "jnavro17@gmail.com";
 		final String password = "jupiter070417";
@@ -48,7 +48,7 @@ public class Email {
 			MimeMultipart multipart = new MimeMultipart("related");
 
 	         BodyPart messageBodyPart = new MimeBodyPart();
-	         String htmlText = "<H1>"+accion+"</H1><img src='http://www.lalimafreezone.com/images/page/logos/micitt.png'>"+"<H2>"+"\nIdentificación: "+cedula+"\nContraseña: "+contrasena+"</H2>";
+	         String htmlText = "<img src='http://www.lalimafreezone.com/images/page/logos/micitt.png'><H1>"+accion+"</H1>"+"<H2>"+""+cedula+"</H2><H2>"+contrasena+"</H2><H3>"+observaciones+"</H3>";
 	         messageBodyPart.setContent(htmlText, "text/html");
 	         // add it
 	         multipart.addBodyPart(messageBodyPart);
