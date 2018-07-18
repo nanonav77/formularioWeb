@@ -667,7 +667,49 @@ public class MySQL{
 		dm.addColumn("Celular");
 		dm.addColumn("id Orcid");
 		
-		String sql = "SELECT cedula, nombre, apellido1,apellido2,DATE_FORMAT(fecha_nacimiento, '%d-%m-%Y') as fecha_nacimiento ,sexo,provincia,canton, teltrabajo,celular,id_orcid,descripcion FROM cientifico";
+		String sql = "SELECT c.cedula, c.nombre, c.apellido1,c.apellido2,DATE_FORMAT(c.fecha_nacimiento, '%d-%m-%Y') as fecha_nacimiento ,c.sexo,c.provincia,c.canton, c.teltrabajo,c.celular,c.id_orcid,c.descripcion FROM micitt.cientifico as c inner join micitt.usuario_rol as rl on rl.cedula = c.cedula where rl.nombre_rol = 'ROLE_USER';";
+		
+		Statement consulta = (Statement) conexion.createStatement();
+		ResultSet resultado = consulta.executeQuery(sql);
+		while(resultado.next()){
+			String cedula = resultado.getString(1);
+			String nombre = resultado.getString(2);
+			String apellido1 = resultado.getString(3);
+			String apellido2 = resultado.getString(4);
+			String fecha = resultado.getString(5);
+			String sexo = resultado.getString(6);
+			String provincia = resultado.getString(7);
+			String canton = resultado.getString(8);
+			String telefono = resultado.getString(9);
+			String celular = resultado.getString(10);
+			String idorcid = resultado.getString(11);
+			
+			String[] rowdata = {cedula, nombre, apellido1, apellido2, fecha, sexo, provincia, canton, telefono, celular
+					,idorcid}; 
+			dm.addRow(rowdata);
+			
+		}
+		return dm;
+		
+		
+	}
+    
+    
+    public DefaultTableModel getPersonalIndividual(DefaultTableModel dm, int cedulaa) throws ClassNotFoundException, SQLException{
+    	abrirConexionBD();
+		dm.addColumn("Cedula");
+		dm.addColumn("Nombre");
+		dm.addColumn("Apellido 1");
+		dm.addColumn("Apellido 2");
+		dm.addColumn("Fecha de nacimiento");
+		dm.addColumn("Sexo");
+		dm.addColumn("Provicia");
+		dm.addColumn("Canton");
+		dm.addColumn("Telefono de trabajo");
+		dm.addColumn("Celular");
+		dm.addColumn("id Orcid");
+		
+		String sql = "SELECT c.cedula, c.nombre, c.apellido1,c.apellido2,DATE_FORMAT(c.fecha_nacimiento, '%d-%m-%Y') as fecha_nacimiento ,c.sexo,c.provincia,c.canton, c.teltrabajo,c.celular,c.id_orcid,c.descripcion FROM micitt.cientifico as c inner join micitt.usuario_rol as rl on rl.cedula = c.cedula where rl.nombre_rol = 'ROLE_USER' AND c.cedula ="+cedulaa+";";
 		
 		Statement consulta = (Statement) conexion.createStatement();
 		ResultSet resultado = consulta.executeQuery(sql);
@@ -702,7 +744,36 @@ public class MySQL{
 		dm2.addColumn("ano");
 		dm2.addColumn("nombre");
 		
-		String sql = "SELECT f_cedula, grado, universidad,ano, nombre FROM informacion_academica";
+		String sql = "SELECT c.f_cedula, c.grado, c.universidad,c.ano, c.nombre FROM micitt.informacion_academica as c inner join micitt.usuario_rol as rl on rl.cedula = c.f_cedula where rl.nombre_rol = 'ROLE_USER';";
+		
+		Statement consulta = (Statement) conexion.createStatement();
+		ResultSet resultado = consulta.executeQuery(sql);
+		while(resultado.next()){
+			String cedula = resultado.getString(1);
+			String grado = resultado.getString(2);
+			String universidad = resultado.getString(3);
+			String ano = resultado.getString(4);
+			String nombre = resultado.getString(5);
+			
+			
+			String[] rowdata1 = {cedula, grado, universidad, ano, nombre}; 
+			dm2.addRow(rowdata1);
+			
+		}
+		return dm2;
+		
+		
+	}
+    
+    public DefaultTableModel getInfoAcademicaSolo(DefaultTableModel dm2, int pcedula) throws ClassNotFoundException, SQLException{
+    	abrirConexionBD();
+		dm2.addColumn("Cedula");
+		dm2.addColumn("grado");
+		dm2.addColumn("universidad");
+		dm2.addColumn("ano");
+		dm2.addColumn("nombre");
+		
+		String sql = "SELECT c.f_cedula, c.grado, c.universidad,c.ano, c.nombre FROM micitt.informacion_academica as c inner join micitt.usuario_rol as rl on rl.cedula = c.f_cedula where rl.nombre_rol = 'ROLE_USER' and c.f_cedula ="+pcedula+";";
 		
 		Statement consulta = (Statement) conexion.createStatement();
 		ResultSet resultado = consulta.executeQuery(sql);
@@ -733,7 +804,41 @@ public class MySQL{
 		dm2.addColumn("ano");
 		dm2.addColumn("pais");
 		
-		String sql = "SELECT f_cedula, actividad, areainvestigacion, institucion, departamento, anoinicio, pais FROM informacion_profesional";
+		String sql = "SELECT c.f_cedula, c.actividad, c.areainvestigacion, c.institucion, c.departamento, c.anoinicio, pais FROM informacion_profesional as c inner join micitt.usuario_rol as rl on rl.cedula = c.f_cedula where rl.nombre_rol = 'ROLE_USER';";
+		
+		Statement consulta = (Statement) conexion.createStatement();
+		ResultSet resultado = consulta.executeQuery(sql);
+		while(resultado.next()){
+			String cedula = resultado.getString(1);
+			String actividad = resultado.getString(2);
+			String area = resultado.getString(3);
+			String institucion = resultado.getString(4);
+			String departamento = resultado.getString(5);
+			String ano = resultado.getString(6);
+			String pais = resultado.getString(7);
+
+					
+			
+			String[] rowdata1 = {cedula, actividad, area, institucion, departamento, ano, pais}; 
+			dm2.addRow(rowdata1);
+			
+		}
+		return dm2;
+		
+		
+	}
+    
+    public DefaultTableModel getInfoProfesionalSolo(DefaultTableModel dm2, int pcedula) throws ClassNotFoundException, SQLException{
+    	abrirConexionBD();
+		dm2.addColumn("Cedula");
+		dm2.addColumn("actividad");
+		dm2.addColumn("areainvestigacion");
+		dm2.addColumn("institucion");
+		dm2.addColumn("departamento");
+		dm2.addColumn("ano");
+		dm2.addColumn("pais");
+		
+		String sql = "SELECT c.f_cedula, c.actividad, c.areainvestigacion, c.institucion, c.departamento, c.anoinicio, pais FROM informacion_profesional as c inner join micitt.usuario_rol as rl on rl.cedula = c.f_cedula where rl.nombre_rol = 'ROLE_USER' and c.f_cedula="+pcedula+";";
 		
 		Statement consulta = (Statement) conexion.createStatement();
 		ResultSet resultado = consulta.executeQuery(sql);

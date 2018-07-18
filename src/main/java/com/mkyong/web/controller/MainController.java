@@ -29,6 +29,7 @@ import modelo.dto.DTO_Profesional;
 import modelo.enlaceDeDatos.Singleton_MySQL;
 import modelo.logicaDeIntegracion.Email;
 import modelo.logicaDeIntegracion.Excel;
+import modelo.logicaDeIntegracion.ExcelSolo;
 import modelo.logicaDeNegocio.Cientifico;
 import modelo.logicaDeNegocio.DatabaseImageExample;
 
@@ -758,10 +759,12 @@ public class MainController {
 	}	
 	
 	 @RequestMapping(value="/downloadFile", method = RequestMethod.GET)
-     public void downloadFile(@RequestParam("determinarTipoDes") String tipoDescarga,HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException {             
+     public void downloadFile(@RequestParam("determinarTipoDes") String tipoDescarga,@RequestParam("usuarioDescargar") String usuario,HttpServletRequest request, HttpServletResponse response) throws IOException, ClassNotFoundException, SQLException {             
 		
 		response.setContentType("application/vnd.ms-excel");
 		response.setHeader("Content-Disposition", "inline; filename=\"Documento_Informativo.xls\"");
+		
+		//System.out.println(usuario.substring(0, 9));
 		
 		if (tipoDescarga.equals("2")) {
 			
@@ -775,7 +778,19 @@ public class MainController {
 			wb.write(out);
 			out.close();
 		}
-		
+		if (tipoDescarga.equals("1")) {
+			
+			System.out.println(usuario.substring(0, 9));
+			ExcelSolo ex = new ExcelSolo(Integer.parseInt(usuario.substring(0, 9)));
+			ex.escribirExcel();
+			ex.escribirExcelAcademica();
+			ex.escribirExcelProfesional();
+			 
+			HSSFWorkbook wb = ex.getWb();
+			OutputStream out = response.getOutputStream();
+			wb.write(out);
+			out.close();
+		}
 		 
 	
   }

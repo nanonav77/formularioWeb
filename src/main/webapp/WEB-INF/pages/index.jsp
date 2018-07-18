@@ -1104,8 +1104,9 @@
 								  <input type="radio" id="radioExcel2" name="radioExcel" value="2" style="position:absolute;top:125px;left:230px">
 								  <span class="checkmark" style="position:absolute;top:2px;left:5px"></span>
 								</label>
-								<button onClick="determinarTipoDescargaExcel('document.downloadFile.radioExcel');" class="button button3" type="submit" style="position:absolute;top:65px;right:100px;width:200px;height:120px;">Descargar</button>
+								<button onClick="determinarTipoDescargaExcel('document.downloadFile.radioExcel');document.getElementById('usuarioDescargar').value = document.getElementById('selectBusqueda').value;" class="button button3" type="submit" style="position:absolute;top:65px;right:100px;width:200px;height:120px;">Descargar</button>
                             	<input type="text" id="determinarTipoDes" name="determinarTipoDes" style="display: none;">
+                            	<input type="text" id="usuarioDescargar" name="usuarioDescargar" style="display: none;">
                             </div>
 
                         </div>
