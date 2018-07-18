@@ -43,12 +43,25 @@ public class Email {
 			message.setRecipients(Message.RecipientType.TO,
 				InternetAddress.parse(correoDestino));
 			message.setSubject(asunto);
-			message.setText("Dear Mail Crawler,"
-				+ "\n\n No spam to my email, please!");
+			
+			
+			MimeMultipart multipart = new MimeMultipart("related");
+
+	         // first part (the html)
+	         BodyPart messageBodyPart = new MimeBodyPart();
+	         String htmlText = "<H1>"+accion+"</H1><img src='http://www.lalimafreezone.com/images/page/logos/micitt.png'>"+"<H2>"+"\nIdentificación: "+cedula+"\nContraseña: "+contrasena+"</H2>";
+	         messageBodyPart.setContent(htmlText, "text/html");
+	         // add it
+	         multipart.addBodyPart(messageBodyPart);
+
+	         // add image to the multipart
+	         multipart.addBodyPart(messageBodyPart);
+
+	         // put everything together
+	         message.setContent(multipart);
 
 			Transport.send(message);
 
-			System.out.println("Done");
 
 		} catch (MessagingException e) {
 			throw new RuntimeException(e);
