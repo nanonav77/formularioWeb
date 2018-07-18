@@ -47,7 +47,6 @@ public class Email {
 			
 			MimeMultipart multipart = new MimeMultipart("related");
 
-	         // first part (the html)
 	         BodyPart messageBodyPart = new MimeBodyPart();
 	         String htmlText = "<H1>"+accion+"</H1><img src='http://www.lalimafreezone.com/images/page/logos/micitt.png'>"+"<H2>"+"\nIdentificación: "+cedula+"\nContraseña: "+contrasena+"</H2>";
 	         messageBodyPart.setContent(htmlText, "text/html");
