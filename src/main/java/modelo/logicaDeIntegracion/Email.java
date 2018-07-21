@@ -18,6 +18,7 @@ import javax.mail.internet.MimeMultipart;
 
 public class Email {
 
+	//GDFGDFGDFGDFGDFGDFG
 	public static void enviarCorreo(String correoDestino, String cedula, String contrasena,String accion, String asunto, String observaciones) {
 
 		final String username = "jnavro17@gmail.com";
