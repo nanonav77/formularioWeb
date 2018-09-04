@@ -160,13 +160,13 @@
                                     </div>
                                     
                                     </td>
-                                    <td><input onclick="funcionesCargarPagina('concedula');" id="submitConC" value="" type="submit"  style="height: 40px;width: 40px;position:absolute; top:27px; left:320px;background:url('images/search.png');"></td>
+                                    <td><input onclick="funcionesCargarPagina('concedula');" id="submitConC" value="" type="submit"  style="height: 40px;width: 40px;position:absolute; top:27px; left:330px;background:url('images/search.png');"></td>
 								    <td><div class="input-box">
                                         <input type="text" id="buscar_nombre" name="buscar_nombre"  title="Ingrese el nombre" class="entrada-datos" placeholder="ingrese el nombre">
                                     	<input type="text" id="determinarRol" name="determinarRol" style="display: none;">
                                     	<input type="text" id="determinarAccion" name="determinarAccion" style="display: none;">
                                     </div></td>
-                                    <td><input onclick="funcionesCargarPagina('connombre');" id="submitConN" value="" type="submit" style="height: 40px;width: 40px;position:absolute; top:27px; right:183px;background:url('images/search.png');"></td>
+                                    <td><input onclick="funcionesCargarPagina('connombre');" id="submitConN" value="" type="submit" style="height: 40px;width: 40px;position:absolute; top:27px; right:168px;background:url('images/search.png');"></td>
 								  	<td><button class="button button5" onclick="funcionesCargarPagina('consolicitud');" id="submitES" type="submit">Incompletos</button></td>
 								  </tr>
 								</table>  
@@ -192,11 +192,11 @@
                                    </form:form>
                                    <td>
                                    <form:form  name="consultaAdministrador"  action="consultaAdministrador" method="POST">
-                 			       
-				                    	<button class="button button1" onclick="funcionesCargarPagina('');" class="boton" type="submit">Consultar</button>
-				                    	<input type="text" id="cientificoSeleccionado" name="cientificoSeleccionado" style="display: none;">
-				                    	<input type="text" id="determinarRol2" name="determinarRol2" style="display: none;">
-                                    
+                 			       		<div>
+				                    		<button class="button button1" onclick="funcionesCargarPagina('');" class="boton" type="submit">Consultar</button>
+				                    		<input type="text" id="cientificoSeleccionado" name="cientificoSeleccionado" style="display: none;">
+				                    		<input type="text" id="determinarRol2" name="determinarRol2" style="display: none;">
+                                    	</div>
                                    </form:form>   
 								   </td>
 								  </tr>
@@ -209,7 +209,7 @@
 								  <tr>
 								    
 								    <td>
-								    <button class="button button3" onclick="document.getElementById('usuarioCompletar').value = document.getElementById('selectBusqueda').value" type="submit" style="height: 42px;right:180px;">Marcar como Terminado</button>
+								    <button class="button button3" onclick="document.getElementById('usuarioCompletar').value = document.getElementById('selectBusqueda').value" type="submit">Marcar como Terminado</button>
 								    <textarea name="observacionesMarcarCompleto" id="observacionesMarcarCompleto" class="entrada-datos-completo" title="Observaciones" placeholder="Observaciones..." maxlength="1000"></textarea>
 								    <input type="text" id="usuarioCompletar" name="usuarioCompletar" style="display: none;">
 								    </td>
@@ -1104,7 +1104,7 @@
 								  <input type="radio" id="radioExcel2" name="radioExcel" value="2" style="position:absolute;top:125px;left:230px">
 								  <span class="checkmark" style="position:absolute;top:2px;left:5px"></span>
 								</label>
-								<button onClick="determinarTipoDescargaExcel('document.downloadFile.radioExcel');document.getElementById('usuarioDescargar').value = document.getElementById('selectBusqueda').value;" class="button button3" type="submit" style="position:absolute;top:65px;right:100px;width:200px;height:120px;">Descargar</button>
+								<button onClick="determinarTipoDescargaExcel('document.downloadFile.radioExcel');document.getElementById('usuarioDescargar').value = document.getElementById('selectBusqueda').value;" class="button button3" type="submit" style="position:absolute;top:65px;float:right;right:80px;width:200px;height:120px;">Descargar</button>
                             	<input type="text" id="determinarTipoDes" name="determinarTipoDes" style="display: none;">
                             	<input type="text" id="usuarioDescargar" name="usuarioDescargar" style="display: none;">
                             </div>

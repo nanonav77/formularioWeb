@@ -16,7 +16,7 @@
 			    width: 100px;
 			    position:absolute; 
 			    top:125px; 
-			    right:55px;
+			    right:42px;
 			    
 			}
 			
@@ -44,11 +44,15 @@
 			
 			.button3 {
 			    background-color: white; 
+			    float:right;
 			    color: black; 
 			    border: 2px solid #f44336;
-			    font-size: 22px;
+			    font-size: 18px;
+			    height: 44px;
+			    width: 205px;
+			    right:180px;
 			    position:absolute; 
-			}
+			}   
 			
 			.button3:hover {
 			    background-color: #f44336;
@@ -71,8 +75,8 @@
 			    width: 100px;
 			    position:absolute; 
 			    top:27px; 
-			    right:55px;
-			}
+			    right:42px;
+			}   
 			
 			.button5:hover {
 			    background-color: #555555;
